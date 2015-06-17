@@ -1,0 +1,14 @@
+{
+  "name": "norris-static",
+  "version": "1.0.0",
+  "authors": [
+    "Kaizen-Team"
+  ],
+  "description": "Norris static files",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "~3.3.4",
+    "jquery": "~2.1.4",
+    "angular": "~1.4.0"
+  }
+}

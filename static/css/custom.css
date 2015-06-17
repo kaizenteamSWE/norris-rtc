@@ -1,0 +1,26 @@
+.jumbotron {padding-top:20px; padding-bottom: 20px; margin-bottom:0px; background-image: linear-gradient(to bottom, #DDD 0%, #EEE 100%);}
+.jumbotron h1 { font-size:30px; }
+.content img { width:100%;}
+footer {padding:20px 0px; background-color:#DDD; margin:50px auto 0px auto;  }
+.row { margin-bottom: 25px}
+.toolbar { margin-top: 4px;}
+.toolbar ul { margin:0px; list-style-type: none; text-align:left; padding-left:5px; }
+.logo-norris { max-height:100px; max-width:90%; }
+.chart-type { font-style:italic; color:#aaa; }
+.returnlink { padding:10px; background-color:#ddd;}
+.header-margin { margin:0px auto 50px auto;  }
+.returnlink a { color:#525252; font-size:1.5em; }
+
+.col-width-fixed { 
+	min-height:300px;
+}
+
+@media (min-width: 970px) {
+.col-width-fixed { 
+	height:400px;
+	margin-bottom:70px;
+}
+.logincontent {
+	width:500px;
+}
+}

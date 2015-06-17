@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html ng-app="chuck">
+    <head>
+        <%
+        var charts = page.getCharts();
+        var settings = page.getSettings();
+        var maxChartsRow = settings.maxChartsRow;
+        var maxChartsCol = settings.maxChartsCol;
+        var path = endpoint;
+
+        function printTag(chart) {
+            return '<chuck-' + chart.getType() + ' chart-endpoint="' + path + '" chart-id="' + chart.getId() + '"></chuck-' + chart.getType() + '>';
+        }
+        %>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+        <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+
+        <script src="/bower_components/angular/angular.min.js"></script>
+        <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="/node_modules/chuck-rtc/chuck.js"></script>
+
+        <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/custom.css" rel="stylesheet">
+    </head>
+    <body>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <header class="jumbotron text-center">
+      <div class="container">
+        <img src="/images/norris-hor.png" class="logo-norris" title="Norris" alt="Norris Logo" />
+          <h1><%= settings.title %></h1>
+      </div>
+    </header>
+    <div class="returnlink text-center header-margin"><a href="../../">Torna alla pagina iniziale</a></div>
+    <div class="container content">
+        <%
+        var nTot = charts.length < maxChartsRow * maxChartsCol ? charts.length : maxChartsRow * maxChartsCol;
+        var nRows = Math.floor(nTot / maxChartsCol);
+        var lastRow = nTot % maxChartsCol;
+        var currentRow = 0;
+
+        for (var i = 0; i < charts.length && i < nTot; i++) {
+            if( i % maxChartsCol == 0) {
+                currentRow++;
+                %><div class="row col-width-fixed"><%
+            }
+            if(currentRow <= nRows) {
+                %><div class="col-md-<%=12 / maxChartsCol %>"  style="height:100%"><%
+            } else {
+                %><div class="col-md-<%=12 / lastRow %>"  style="height:100%"><%
+            }
+            %>
+                <h3>
+                    <% if(charts[i].getSettings().title){ %>
+
+                        <%= charts[i].getSettings().title %>
+                    <% } else { %>
+                        &nbsp;
+                    <% } %>
+                </h3>
+                <%- printTag(charts[i]) %>
+            </div>
+            <% if(i % maxChartsCol == maxChartsCol - 1) { %></div><% }
+        };
+        if(maxChartsCol * maxChartsRow != nTot) { %></div><% } %>
+    </div>
+    <footer class="text-center">
+          <img src="/images/kt-trademark.png" alt="Kaizen Team Trademark" title="Kaizen Team" height="100px" />
+    </footer>
+    </body>
+</html>
