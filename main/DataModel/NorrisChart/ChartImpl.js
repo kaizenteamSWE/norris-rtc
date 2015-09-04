@@ -222,3 +222,4 @@ var BarChartImpl = require('./BarChartImpl.js');
 var LineChartImpl = require('./LineChartImpl.js');
 var MapChartImpl = require('./MapChartImpl.js');
 var TableImpl = require('./TableImpl.js');
+var DonutChartImpl = require('./DonutChartImpl.js');
