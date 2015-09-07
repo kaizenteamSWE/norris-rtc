@@ -72,9 +72,9 @@ DonutChartInPlaceUpdater.prototype.update = function (chart, updateData) {
 DonutChart:
 data = {
     datasets: [
-        {name: 'pippo', value: 1}, // serie1
-        {name: 'pluto', value: 4}, // serie2
-        {name: 'paperino', value: 9} // serie3
+        {name: 'pippo', color : '', value: 1}, // serie1
+        {name: 'pluto', color : '', value: 4}, // serie2
+        {name: 'paperino', color : '', value: 9} // serie3
     ]
 }
 
