@@ -1,10 +1,10 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "DonutChartData",
-    "description": "The data contained in a DonutChart",
+    "title": "DonutChartInPlaceUpdate",
+    "description": "The data contained in a DonutChart InPlace update object",
     "type": "object",
-    "properties": {       
-        "datasets": {
+    "properties": {
+        "inplace": {
             "type": "array",
             "items": {
                 "type": "object",
@@ -12,17 +12,12 @@
                     "name": {
                         "type": "string"
                     },
-                    "color": {
-                        "type": "string",
-                        "pattern": "^#[0-9a-fA-F]{6}$"
-                    },
-                    "value": {
+                    "newValue": {
                         "type": "number"
                     }
                 },
-                "required": ["value"]
+                "required": ["name", "newValue"]
             }
         }
-    },
-    "required": ["datasets"]
+    }
 }
